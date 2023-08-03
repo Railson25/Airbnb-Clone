@@ -23,7 +23,7 @@ export const UserMenu = () => {
                 </div>
                 <div
                     onClick={toggleOpen}
-                    className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex items-center gap-3 rounded-full cursor-pointer transition hover:shadow-md"
+                    className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer transition hover:shadow-md"
                 >
                     <AiOutlineMenu  />
                     <div className='hidden md:block'>
