@@ -24,7 +24,12 @@ export default async function getCurrentUser(){
         if(!curretUser){
             return null
         }
-        return curretUser
+        return {
+            ...curretUser,
+            createdAt: curretUser.createdAt.toISOString(),
+            updatedAt: curretUser.updatedAt.toISOString(),
+            emailVerified: curretUser.emailVerifield?.toISOString() || null
+        }
     } catch (error: any) {
         return null
     }
