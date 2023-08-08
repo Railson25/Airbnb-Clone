@@ -9,7 +9,6 @@ interface CategoryBoxProps {
     icon: IconType
     label: string
     selected?: boolean
-    description: string
 }
 
 export const CategoryBox = ({icon : Icon, label, selected}: CategoryBoxProps) => {
