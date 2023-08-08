@@ -1,9 +1,10 @@
 "use client"
 
 import userRegisterModal from '@/app/hooks/userRegisterModal'
+import userLoginModal from '@/app/hooks/userLoginModal'
 import axios from 'axios'
 import {signIn} from 'next-auth/react'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import {FieldValues, SubmitHandler, useForm} from 'react-hook-form'
 import {AiFillGithub} from 'react-icons/ai'
 import {FcGoogle} from 'react-icons/fc'
@@ -14,8 +15,10 @@ import { toast } from 'react-hot-toast'
 import { Button } from '../button'
 
 
+
 export const RegisterModal = () => {
     const registerModal =  userRegisterModal()
+    const loginModal = userLoginModal()
     const [loading, setLoading] = useState(false)
 
     const {register, handleSubmit, formState: {errors}} = useForm<FieldValues>({
@@ -40,6 +43,11 @@ export const RegisterModal = () => {
                 setLoading(false)
             })
     }
+
+    const toggle = useCallback(() => {
+        registerModal.onClose()
+        loginModal.onOpen()
+    }, [loginModal, registerModal])
 
     const bodyContent = (
         <div className='flex flex-col gap-4 text-gray-600'>
@@ -95,7 +103,7 @@ export const RegisterModal = () => {
                 <div className=' justify-center flex flex-row items-center gap-2'>
                     <div>Already have an account?</div>
                     <div
-                        onClick={registerModal.onClose}
+                        onClick={toggle}
                         className='text-black font-bold cursor-pointer hover:underline'
                     >
                         Log in
