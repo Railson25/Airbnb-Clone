@@ -212,6 +212,27 @@ export const RentModal = () => {
         )
     }
 
+    if(step === STEPS.PRICE){
+        bodyContent = (
+            <div className="flex flex-col gap-8 text-gray-600">
+                <Heading 
+                    title="Now, set your price"
+                    subtitle="How much do you charge per night?"
+                />
+                <Input 
+                    id="price"
+                    label="Price"
+                    formatPrice
+                    type="number"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+            </div>
+        )
+    }
+
     return (
         <Modal 
             title="Airbnb your home"
