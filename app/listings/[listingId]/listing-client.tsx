@@ -2,8 +2,7 @@
 
 import { Container } from "@/app/components/container"
 import { categories } from "@/app/components/navbar/categories"
-import { SafeUser, safeListing } from "@/app/types"
-import { Reservation } from "@prisma/client"
+import { SafeReservation, SafeUser, safeListing } from "@/app/types"
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { ListingHead } from "../../components/listings/listing-head "
 import { ListingInfo } from "../../components/listings/listing-info "
@@ -22,7 +21,7 @@ const initialDateRange = {
 }
 
 interface ListingClientProps {
-    reservations?: Reservation[]
+    reservations?: SafeReservation[]
     listing: safeListing & {
         user: SafeUser
     }
@@ -67,8 +66,8 @@ export const ListingClient = ({listing, reservations = [], currentUser}: Listing
         axios.post('/api/reservations', {
             totalPrice,
             startDate: dateRange.startDate,
-            endtDate: dateRange.endDate,
-            listingId: listing?.id
+            endDate: dateRange.endDate,
+            listingId: listing.id
         })
         .then(() => {
             toast.success('Listing reserved')
