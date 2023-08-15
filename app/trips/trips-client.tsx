@@ -51,7 +51,7 @@ export const TripsClient  = ({currentUser, reservations}: TripsClientProps) => {
                         actionId={reservation.id}
                         onAction={onCancel}
                         disabled={deletingId === reservation.id}
-                        actionLabel='Cancel rreservation'
+                        actionLabel='Cancel reservation'
                         currentUser={currentUser}
                     />
                 ))}
